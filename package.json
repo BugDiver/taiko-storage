@@ -4,8 +4,6 @@
   "description": "A taiko plugin to interact with browser storages (local and session)",
   "main": "./src/index.js",
   "scripts": {
-    "build": "tsc",
-    "codecov": "codecov",
     "test": "npm install -g . && TAIKO_PLUGIN='taiko-storage' jest tests/integration/__tests__/**.spec.js --ci --reporters=default "
   },
   "repository": {

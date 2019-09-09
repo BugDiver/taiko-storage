@@ -3,7 +3,7 @@ const { openBrowser, goto, closeBrowser, storage: { local } } = require('taiko')
 jest.setTimeout(30000);
 
 beforeAll(async () => {
-    await openBrowser({ headless: false });
+    await openBrowser();
 });
 
 afterAll(async () => {
