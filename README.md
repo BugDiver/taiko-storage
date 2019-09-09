@@ -7,6 +7,8 @@
 </h1>
 
 
+[![Actions Status](https://github.com/bugdiver/taiko-storage/workflows/tests/badge.svg)](https://github.com/BugDiver/taiko-storage/actions)
+
 # taiko-storage
 
 A taiko plugin to interact with browser storages (local and session).
