@@ -1,0 +1,13 @@
+docs/*
+tests/*
+build/*
+.local-chromium
+.eslintrc
+.vscode
+.github
+test
+.vscode
+jest*
+TODO*
+azure*
+docs

@@ -1,0 +1,33 @@
+{
+  "name": "taiko-storage",
+  "version": "0.0.1",
+  "description": "A taiko plugin to interact with browser storages (local and session)",
+  "main": "./src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "codecov": "codecov",
+    "test": "npm install -g . && TAIKO_PLUGIN='taiko-storage' jest tests/integration/__tests__/**.spec.js --ci --reporters=default "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bugdiver/taiko-storage.git"
+  },
+  "keywords": [
+    "taiko",
+    "chrome",
+    "plugin",
+    "localStorage",
+    "sessionStorage"
+  ],
+  "author": "BugDiver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bugdiver/taiko-storage/issues"
+  },
+  "homepage": "https://github.com/bugdiver/taiko-storage#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "taiko": "^1.0.1"
+  }
+}
