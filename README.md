@@ -38,7 +38,7 @@ const { openBrowser, closeBrowser, click, storage: {local, session} } = require(
 The plugin exposes two variables `local` and `session` which represents to the respective storages.
 The APIs for both the storage are same and try to very close the the native storage apis.
 
-### `setItem(key, value)` Command
+### `setItem(key, value)`
 
 set the given key value to storage
 
@@ -49,7 +49,7 @@ await session.setItem(key, value);
 
 ```
 
-###### `getItem(key)` Command
+### `getItem(key)`
 
 featch the value for given key from storage
 
@@ -61,7 +61,7 @@ await session.getItem(key);
 ```
 
 
-###### `hasItem(key)` Command
+### `hasItem(key)`
 
 validate if the given key exists in storage.
 
@@ -73,7 +73,7 @@ await session.hasItem(key);
 ```
 
 
-###### `removeItem(key)` Command
+### `removeItem(key)`
 
 remove the item with given key from the storage.
 
@@ -85,7 +85,7 @@ await session.removeItem(key);
 ```
 
 
-###### `clear()` Command
+### `clear()`
 
 clear the stoarage
 
@@ -96,7 +96,7 @@ await session.clear();
 
 ```
 
-###### `length()` Command
+### `length()`
 
 tell the no of items in storage.
 
