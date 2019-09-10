@@ -6,12 +6,12 @@
 	<br>
 </h1>
 
-
+[![npm version](https://badge.fury.io/js/taiko-storage.svg)](https://badge.fury.io/js/taiko-storage)
 [![Actions Status](https://github.com/bugdiver/taiko-storage/workflows/tests/badge.svg)](https://github.com/BugDiver/taiko-storage/actions)
 
 # taiko-storage
 
-A taiko plugin to interact with browser storages (local and session).
+A taiko plugin to interact with browser storages (localStorage and sessionStorage).
 
 ## Installation
 
@@ -20,13 +20,19 @@ A taiko plugin to interact with browser storages (local and session).
 ## Usage
 
 ```javascript
-const { openBrowser, closeBrowser, click, storage: {local, session} } = require('taiko');
+const { openBrowser, closeBrowser, click, storage: { localStorage, sessionStorage} } = require('taiko');
+
+/*
+OR
+const { openBrowser, closeBrowser, click, storage } = require('taiko');
+cosnt {localStorage, sessionStorage} = storage;
+*/
 
 (async () => {
     try {
         await openBrowser();
-        await local.setItem("Key", "Value");
-        let value = await local.getItem("Key");
+        await localStorage.setItem("Key", "Value");
+        let value = await localStorage.getItem("Key");
         // more actions
         // ...
     } finally {
@@ -37,7 +43,7 @@ const { openBrowser, closeBrowser, click, storage: {local, session} } = require(
 
 ## APIs
 
-The plugin exposes two variables `local` and `session` which represents to the respective storages.
+The plugin exposes two variables `localStorage` and `sessionStorage` which represents to the respective storages.
 The APIs for both the storage are same and try to very close the the native storage apis.
 
 ### `setItem(key, value)`
@@ -45,9 +51,9 @@ The APIs for both the storage are same and try to very close the the native stor
 set the given key value to storage
 
 ```js
-await local.setItem(key, value);
+await localStorage.setItem(key, value);
 // or
-await session.setItem(key, value);
+await sessionStorage.setItem(key, value);
 
 ```
 
@@ -56,9 +62,9 @@ await session.setItem(key, value);
 featch the value for given key from storage
 
 ```js
-await local.getItem(key);
+await localStorage.getItem(key);
 // or
-await session.getItem(key);
+await sessionStorage.getItem(key);
 
 ```
 
@@ -68,9 +74,9 @@ await session.getItem(key);
 validate if the given key exists in storage.
 
 ```js
-await local.hasItem(key);
+await localStorage.hasItem(key);
 // or
-await session.hasItem(key);
+await sessionStorage.hasItem(key);
 
 ```
 
@@ -80,9 +86,9 @@ await session.hasItem(key);
 remove the item with given key from the storage.
 
 ```js
-await local.removeItem(key);
+await localStorage.removeItem(key);
 // or
-await session.removeItem(key);
+await sessionStorage.removeItem(key);
 
 ```
 
@@ -92,9 +98,9 @@ await session.removeItem(key);
 clear the stoarage
 
 ```js
-await local.clear();
+await localStorage.clear();
 // or
-await session.clear();
+await sessionStorage.clear();
 
 ```
 
@@ -103,9 +109,9 @@ await session.clear();
 tell the no of items in storage.
 
 ```js
-await local.length();
+await localStorage.length();
 // or
-await session.length();
+await sessionStorage.length();
 
 ```
 
@@ -116,4 +122,4 @@ To launch the REPL type `taiko --plugin taiko-storage` in your favorite terminal
 e.g
 `Version: 0.7.0 (Chromium:74.0.3723.0) Type .api for help and .exit to quit`
 
-You should now have full access to local and session storage apis in the taiko REPL window
+You should now have full access to localStorage and sessionStorage apis in the taiko REPL window
