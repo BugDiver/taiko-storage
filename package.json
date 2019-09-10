@@ -1,6 +1,6 @@
 {
   "name": "taiko-storage",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A taiko plugin to interact with browser storages (local and session)",
   "main": "./src/index.js",
   "scripts": {
