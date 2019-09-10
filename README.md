@@ -24,8 +24,10 @@ const { openBrowser, closeBrowser, click, storage: { localStorage, sessionStorag
 
 /*
 OR
+
 const { openBrowser, closeBrowser, click, storage } = require('taiko');
-cosnt {localStorage, sessionStorage} = storage;
+const {localStorage, sessionStorage} = storage;
+
 */
 
 (async () => {
