@@ -1,66 +1,64 @@
+let _taiko = null;
+let _descEmitter = null;
+
 class Storage {
     constructor(type) {
         this.type = type;
-        this.taiko = null;
     }
     async setItem(key, value) {
-        this._validate();
-        await this.taiko.evaluate((_, args) => {
+        await _taiko.evaluate((_, args) => {
             let storage = args.type === 'local' ? localStorage : sessionStorage;
-            return storage.setItem(args.key, args.value);
-        }, { args: { type: this.type, key: key, value: value } });
+            return storage.setItem(args.key, JSON.stringify(args.value));
+        }, { returnByValue: true, args: { type: this.type, key: key, value: value } });
+        _descEmitter.emit('success', 'Added "' + key + '" to ' + this.type + ' storage.');
     }
 
     async clear() {
-        this._validate();
-        await this.taiko.evaluate((_, args) => {
+        await _taiko.evaluate((_, args) => {
             let storage = args.type === 'local' ? localStorage : sessionStorage;
             return storage.clear();
-        }, { args: { type: this.type } });
+        }, { returnByValue: true, args: { type: this.type } });
+        _descEmitter.emit('success', 'Cleared ' + this.type + ' storage.');
     }
 
     async getItem(key) {
-        this._validate();
-        return await this.taiko.evaluate((_, args) => {
+        let value = await _taiko.evaluate((_, args) => {
             let storage = args.type === 'local' ? localStorage : sessionStorage;
             return storage.getItem(args.key);
-        }, { args: { type: this.type, key: key } });
+        }, { returnByValue: true, args: { type: this.type, key: key } });
+        _descEmitter.emit('success', 'Retrieve value for "' + key + '" from ' + this.type + ' storage.');
+        return JSON.parse(value);
     }
 
     async hasItem(key) {
-        this._validate();
-        return await this.taiko.evaluate((_, args) => {
+        let res = await _taiko.evaluate((_, args) => {
             let storage = args.type === 'local' ? localStorage : sessionStorage;
             return storage.hasOwnProperty(args.key);
-        }, { args: { type: this.type, key: key } });
+        }, { returnByValue: true, args: { type: this.type, key: key } });
+        _descEmitter.emit('success', 'The item "' + key + '" is available in ' + this.type + ' storage.');
+        return res;
     }
 
     async length(key) {
-        this._validate();
-        return await this.taiko.evaluate((_, args) => {
+        let res = await _taiko.evaluate((_, args) => {
             let storage = args.type === 'local' ? localStorage : sessionStorage;
             return storage.length;
-        }, { args: { type: this.type, key: key } });
+        }, { returnByValue: true, args: { type: this.type, key: key } });
+        _descEmitter.emit('success', 'The length of ' + this.type + ' storage is ${res}.');
+        return res;
     }
 
     async removeItem(key) {
-        this._validate();
-        await this.taiko.evaluate((_, args) => {
+        await _taiko.evaluate((_, args) => {
             let storage = args.type === 'local' ? localStorage : sessionStorage;
             return storage.removeItem(args.key);
-        }, { args: { type: this.type, key: key } });
+        }, { returnByValue: true, args: { type: this.type, key: key } });
+        _descEmitter.emit('success', 'Removed value for "' + key + '" from ' + this.type + ' storage.');
     }
 
-    _validate() {
-        if (this.taiko === null) {
-            throw new Error('Browser or page not initialized.' +
-                'Call `openBrowser()` before using this API.');
-        }
-
-    }
-
-    _setTaiko(taiko) {
-        this.taiko = taiko;
+    _setTaiko(taiko, descEmitter) {
+        _taiko = taiko;
+        _descEmitter = descEmitter;
     }
 }
 

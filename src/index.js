@@ -5,8 +5,8 @@ const ID = 'storage';
 let localStorage = new Storage('local');
 let sessionStorage = new Storage('session');
 
-let init = async (taiko) => {
-    [localStorage, sessionStorage].forEach(s => s._setTaiko(taiko));
+let init = async (taiko,_,descEmitter) => {
+    [localStorage, sessionStorage].forEach(s => s._setTaiko(taiko, descEmitter));
 };
 
 module.exports = {
