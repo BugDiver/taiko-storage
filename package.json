@@ -26,6 +26,6 @@
   "dependencies": {},
   "devDependencies": {
     "jest": "^24.9.0",
-    "taiko": "^1.0.0"
+    "taiko": "getgauge/taiko"
   }
 }
