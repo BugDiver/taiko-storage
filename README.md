@@ -1,8 +1,5 @@
 <h1 align="center">
-	<br>
 	<img src="./assets/taiko-storage.png" alt="Taiko Storage">
-	<br>
-	<br>
 	<br>
 </h1>
 
