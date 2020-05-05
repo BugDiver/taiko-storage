@@ -27,7 +27,12 @@ class Storage {
             return storage.getItem(args.key);
         }, { returnByValue: true, args: { type: this.type, key: key } });
         _descEmitter.emit('success', 'Retrieve value for "' + key + '" from ' + this.type + ' storage.');
-        return JSON.parse(value);
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+             _descEmitter.emit('error', 'Unable to parse value as JSON for "' + key + '" from ' + this.type + ' storage.');
+             return value;
+        }
     }
 
     async hasItem(key) {
