@@ -30,7 +30,7 @@ class Storage {
         try {
             return JSON.parse(value);
         } catch (e) {
-             _descEmitter.emit('error', 'Unable to parse value as JSON for "' + key + '" from ' + this.type + ' storage.');
+             _descEmitter.emit('success', 'Unable to parse value as JSON for "' + key + '" from ' + this.type + ' storage.');
              return value;
         }
     }
