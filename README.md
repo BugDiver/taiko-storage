@@ -114,6 +114,19 @@ await sessionStorage.length();
 
 ```
 
+
+## Passing Taiko options to APIS,
+
+* The API's allows to pass a optional argument `options` which will be passed to taiko's `evaluate` API (used internally in storage APIs)
+
+Example:
+
+```js
+
+await localStorage.setItem(key, value, { waitForNavigation: false });
+
+```
+
 ## Use in Taiko REPL
 
 To launch the REPL type `taiko --plugin taiko-storage` in your favorite terminal application. This will launch the Taiko Prompt.
