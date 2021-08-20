@@ -25,6 +25,7 @@
   "homepage": "https://github.com/bugdiver/taiko-storage#readme",
   "dependencies": {},
   "devDependencies": {
+    "documentation": "^13.2.5",
     "jest": "^24.9.0",
     "taiko": "getgauge/taiko"
   }
